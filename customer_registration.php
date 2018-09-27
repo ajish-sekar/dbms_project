@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Amaclone</title>
+	<title>FlipTruck</title>
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.6-dist/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -10,10 +10,10 @@
 	<div class="navbar navbar-default navbar-fixed-top" id="topnav">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="index.php" class="navbar-brand">Amaclone</a>
+				<a href="index.php" class="navbar-brand">FlipTruck</a>
 			</div>
 
-			
+
 		</div>
 	</div>
 	<p><br><br></p>
@@ -100,4 +100,9 @@
 	<script src="assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 	<script src="main.js"></script>
 </body>
+<div class="foot"><footer>
+<p>Made with love by ASVAS<span class='glyphicon glyphicon-heart'></span> </a></p>
+</footer></div>
+<style> .foot{text-align: center;}
+</style>
 </html>

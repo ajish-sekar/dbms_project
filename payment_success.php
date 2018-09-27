@@ -15,7 +15,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Amaclone</title>
+	<title>FlipTruck</title>
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap-3.3.6-dist/css/bootstrap.css">
 	<style type="text/css">
 		.content{
