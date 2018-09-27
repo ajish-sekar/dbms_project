@@ -120,6 +120,25 @@ $(document).ready(function(){
 		})
 	})
 
+	$("#admin_login").click(function(event){
+		event.preventDefault();
+		var admin_name=$('#admin_name').val();
+		var admin_pwd=$('#admin_password').val();
+		console.log(admin_pwd);
+		$.ajax({
+			url: "admin_login.php",
+			method: "POST",
+			data: {adminLogin:1,admin_name:admin_name, admin_pwd:admin_pwd},
+			success: function(data){
+				if(data=="true"){
+					window.location.href="admin_home.php";
+				}
+			}
+		})
+	})
+
+
+
 	cart_count();
 
 	function cart_count(){
