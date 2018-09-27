@@ -46,7 +46,7 @@
 									<div class="col-md-3">S. No.</div>
 									<div class="col-md-3">Product Image</div>
 									<div class="col-md-3">Product Name</div>
-									<div class="col-md-3">Price in $</div>
+									<div class="col-md-3">Price in Rs</div>
 								</div>-->
 								</div>
 							</div>
@@ -122,7 +122,7 @@
 							<div class="panel panel-info">
 								<div class="panel-heading">Samsung Galaxy</div>
 								<div class="panel-body"><img src="assets/prod_images/samsung_galaxy.jpg"></div>
-								<div class="panel-heading">$500.00
+								<div class="panel-heading">Rs500.00
 								<button class="btn btn-danger btn-xs" style="float:right;">Add to Cart</button>
 								</div>
 							</div>

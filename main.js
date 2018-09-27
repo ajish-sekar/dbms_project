@@ -177,6 +177,9 @@ $(document).ready(function(){
 		var qty = $("#qty-"+pid).val();
 		var price = $("#price-"+pid).val();
 		var total = qty * price;
+		if(total<0){
+			total=0;
+		}
 		$("#amt-"+pid).val(total);
 	})
 
@@ -200,6 +203,10 @@ $(document).ready(function(){
 		var qty=$('#qty-'+pid).val();
 		var price=$('#price-'+pid).val();
 		var total=$('#amt-'+pid).val();
+		if(qty<0){
+			$('#cart_msg').html("<div class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>No negative values</div>");
+			return;
+		}
 		$.ajax({
 			url: 'action.php',
 			method: 'POST',

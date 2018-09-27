@@ -41,7 +41,7 @@
 						<div class="col-md-2"><b>Product Name</b></div>
 						<div class="col-md-2"><b>Product Price</b></div>
 						<div class="col-md-2"><b>Quantity</b></div>
-						<div class="col-md-2"><b>Price in $</b></div>
+						<div class="col-md-2"><b>Price in Rs</b></div>
 					</div>
 					<br><br>
 					<div id='cartdetail'>
@@ -51,7 +51,7 @@
 						</div>
 						<div class="col-md-2"><img src="assets/prod_images/tshirt.JPG" width="60px" height="60px"></div>
 						<div class="col-md-2">Tshirt</div>
-						<div class="col-md-2">$700</div>
+						<div class="col-md-2">Rs700</div>
 						<div class="col-md-2"><input class="form-control" type="text" size="10px" value='1'></div>
 						<div class="col-md-2"><input class="form-control" type="text" size="10px" value='700'></div>
 					</div>-->
@@ -59,7 +59,7 @@
 					<!--<div class="row">
 						<div class="col-md-8"></div>
 						<div class="col-md-4">
-							<b>Total: $500000</b>
+							<b>Total: Rs500000</b>
 						</div>
 					</div>-->
 					<div class="panel-footer">

@@ -262,17 +262,31 @@
 		$qty=$_POST['qty'];
 		$price=$_POST['price'];
 		$total=$_POST['total'];
-		$sql="UPDATE cart SET qty='$qty', price='$price', total_amount='$total' WHERE p_id='$pid' AND user_id='$uid'";
-		$run_query=mysqli_query($conn,$sql);
-		if($run_query){
-			echo "
-				<div class='alert alert-success' role='alert'>
-  					<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-  					<strong>Success!</strong> Item updated!
-				</div>
-			";
-		}
-
+		$sql1="SELECT * from products where product_id='$pid'";
+		$run_query1=mysqli_query($conn,$sql1);
+		if(mysqli_num_rows($run_query1)){
+			$row=mysqli_fetch_array($run_query1);
+			$stock=$row['product_qty'];
+			if($stock>=$qty){
+				$sql="UPDATE cart SET qty='$qty', price='$price', total_amount='$total' WHERE p_id='$pid' AND user_id='$uid'";
+				$run_query=mysqli_query($conn,$sql);
+				if($run_query){
+					echo "
+						<div class='alert alert-success' role='alert'>
+							<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+							<strong>Success!</strong> Item updated!
+						</div>
+					";
+				}
+			}else{
+				echo "
+					<div class='alert alert-danger' role='alert'>
+						<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+						Only $stock available
+					</div>
+				";
+			}
+	    }
 	}
 
 	if(isset($_POST['cartcount'])){
@@ -300,7 +314,9 @@
 
 			$sql2="INSERT INTO customer_order (uid,pid,p_name,p_price,p_qty,p_status,tr_id) VALUES ('$uid','$cart_prod_id','$cart_prod_title','$cart_price_total','$cart_qty','CONFIRMED','$i')";
 			$run_query2=mysqli_query($conn,$sql2);
+			$sql4="UPDATE products SET product_qty=product_qty-'$cart_qty' WHERE product_id='$cart_prod_id'";
 		}
+		$run_query4=mysqli_query($conn,$sql4);
 		$i++;
 		$sql3="DELETE FROM cart WHERE user_id='$uid'";
 		$run_query3=mysqli_query($conn,$sql3);
@@ -315,6 +331,7 @@
 		$image=$row['product_image'];
 		$title=$row['product_title'];
 		$price=$row['product_price'];
+		$qty=$row['product_qty'];
 		$desc=$row['product_desc'];
 		$tags=$row['product_keywords'];
 
@@ -326,6 +343,7 @@
 					<div class='col-md-6'>
 						<div class='row'> <div class='col-md-12'><h1>$title</h1></div></div>
 						<div class='row'> <div class='col-md-12'>Price:<h3 class='text-muted'>$price</h3></div></div>
+						<div class='row'> <div class='col-md-12'>Stock Left:<h4 class='text-muted'>$qty</h4></div></div>
 						<div class='row'> <div class='col-md-12'>Description:<h4 class='text-muted'>$desc</h4></div></div><br><br>
 						<div class='row'> <div class='col-md-12'>Tags:<h4 class='text-muted'>$tags</h4></div></div>
 						<button pid='$pro_id' class='product btn btn-danger'>Add to Cart</button>

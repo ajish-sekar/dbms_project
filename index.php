@@ -120,7 +120,7 @@
 							<div class="panel panel-info">
 								<div class="panel-heading">Samsung Galaxy</div>
 								<div class="panel-body"><img src="assets/prod_images/samsung_galaxy.jpg"></div>
-								<div class="panel-heading">$500.00
+								<div class="panel-heading">Rs500.00
 								<button class="btn btn-danger btn-xs" style="float:right;">Add to Cart</button>
 								</div>
 							</div>
