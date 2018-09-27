@@ -138,6 +138,7 @@ CREATE TABLE `products` (
   `product_brand` varchar(100) NOT NULL,
   `product_title` varchar(50) NOT NULL,
   `product_price` int(100) NOT NULL,
+  `product_qty` int(100) NOT NULL,
   `product_desc` text NOT NULL,
   `product_image` text NOT NULL,
   `product_keywords` text NOT NULL
@@ -147,23 +148,23 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
-(1, '1', '2', 'Samsung Duos 2', 5000, 'Samsung Duos 2 mobile phone', 'samsungduos.JPG', 'samsung mobile electronics'),
-(2, '1', '3', 'iPhone 5s', 25000, 'iPhone mobile ', 'iphonemobile.JPG', 'apple iphone mobile electronics'),
-(3, '1', '3', 'iPad', 30000, 'iPad tablet for use', 'iPad.jpg', 'apple ipad tablet'),
-(4, '1', '2', 'Samsung Tab', 10000, 'samsung tablet for home use', 'samsungtab.JPG', 'samsung tablet electronics'),
-(5, '1', '4', 'Sony Vaio Laptop', 25000, 'Vaio Laptop', 'vaio.JPG', 'sony laptop vaio'),
-(6, '1', '5', 'LG Aqua 2', 15000, 'LG aqua mobile phone all featured', 'lgaqua.JPG', 'lg mobile phone aqua'),
-(7, '2', '6', 'Draped Lehenga', 1500, 'Matching Lehenga', 'lehenga.JPG', 'lehenga biba'),
-(8, '2', '6', 'SIlk Saree', 1000, 'Pure Silk Saree', 'saree.JPG', 'biba saree'),
-(9, '3', '7', 'T-Shirt', 700, 'T-Shirt for summer', 'tshirt.JPG', 'flying machine tshirt'),
-(10, '3', '7', 'FM Jeans', 1800, 'Jeans for the ones who do', 'jeans.JPG', 'flying machine jeans'),
-(11, '4', '10', 'Baby Shirt', 500, 'Shirt for the babies', 'babyshirt.JPG', 'kids shirt kidzee'),
-(12, '4', '10', 'Kids Jeans', 800, 'Jeans for kids', 'kidsjeans.JPG', 'kids jeans kidzee'),
-(13, '5', '11', 'Computer Table', 2000, 'Table for computer', 'computertable.JPG', 'computer table ikea '),
-(14, '5', '12', 'Trimmer', 1500, 'Trimmer by Philips', 'philipstrimmer.JPG', 'philips trimmer'),
-(15, '6', '8', 'Football Shoes', 2500, 'Shoes to play football by Nike', 'nikeshoes.JPG', 'nike shoes football'),
-(16, '6', '9', 'Football', 600, 'Football by Adidas', 'adidasfootball.JPG', 'football adidas');
+INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_qty`, `product_desc`, `product_image`, `product_keywords`) VALUES
+(1, '1', '2', 'Samsung Duos 2', 5000,10, 'Samsung Duos 2 mobile phone', 'samsungduos.JPG', 'samsung mobile electronics'),
+(2, '1', '3', 'iPhone 5s', 25000,10, 'iPhone mobile ', 'iphonemobile.JPG', 'apple iphone mobile electronics'),
+(3, '1', '3', 'iPad', 30000,10, 'iPad tablet for use', 'iPad.jpg', 'apple ipad tablet'),
+(4, '1', '2', 'Samsung Tab', 10000,10, 'samsung tablet for home use', 'samsungtab.JPG', 'samsung tablet electronics'),
+(5, '1', '4', 'Sony Vaio Laptop', 25000,10, 'Vaio Laptop', 'vaio.JPG', 'sony laptop vaio'),
+(6, '1', '5', 'LG Aqua 2', 15000,10, 'LG aqua mobile phone all featured', 'lgaqua.JPG', 'lg mobile phone aqua'),
+(7, '2', '6', 'Draped Lehenga', 1500,10, 'Matching Lehenga', 'lehenga.JPG', 'lehenga biba'),
+(8, '2', '6', 'SIlk Saree', 1000,10, 'Pure Silk Saree', 'saree.JPG', 'biba saree'),
+(9, '3', '7', 'T-Shirt', 700,10, 'T-Shirt for summer', 'tshirt.JPG', 'flying machine tshirt'),
+(10, '3', '7', 'FM Jeans', 1800,10, 'Jeans for the ones who do', 'jeans.JPG', 'flying machine jeans'),
+(11, '4', '10', 'Baby Shirt', 500,10, 'Shirt for the babies', 'babyshirt.JPG', 'kids shirt kidzee'),
+(12, '4', '10', 'Kids Jeans', 800,10, 'Jeans for kids', 'kidsjeans.JPG', 'kids jeans kidzee'),
+(13, '5', '11', 'Computer Table', 2000,10, 'Table for computer', 'computertable.JPG', 'computer table ikea '),
+(14, '5', '12', 'Trimmer', 1500,10, 'Trimmer by Philips', 'philipstrimmer.JPG', 'philips trimmer'),
+(15, '6', '8', 'Football Shoes', 2500,10, 'Shoes to play football by Nike', 'nikeshoes.JPG', 'nike shoes football'),
+(16, '6', '9', 'Football', 600,10, 'Football by Adidas', 'adidasfootball.JPG', 'football adidas');
 
 -- --------------------------------------------------------
 

@@ -126,7 +126,6 @@
 							</div>
 						</div>-->
 					</div>
-					<div class="panel-footer">&copy; 2017</div>
 				</div>
 			</div>
 			<div class="col-md-1"></div>
