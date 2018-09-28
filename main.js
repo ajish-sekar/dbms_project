@@ -177,7 +177,7 @@ $(document).ready(function(){
 		var qty = $("#qty-"+pid).val();
 		var price = $("#price-"+pid).val();
 		var total = qty * price;
-		if(total<0){
+		if(total<0 || isNaN(total)){
 			total=0;
 		}
 		$("#amt-"+pid).val(total);

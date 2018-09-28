@@ -162,7 +162,7 @@
 				$pro_price = $row["product_price"];
 
 				
-				$sql="INSERT INTO cart(p_id,ip_add,user_id,product_title,product_image,qty,price,total_amount) VALUES('$pid','0.0.0.0','$uid','$pro_title','$pro_image','1','$pro_price','$pro_price')";
+				$sql="INSERT INTO cart(p_id,ip_add,user_id,qty,total_amount) VALUES('$pid','0.0.0.0','$uid','1','$pro_price')";
 				$run_query = mysqli_query($conn,$sql);
 				if($run_query){
 					echo "
@@ -180,7 +180,7 @@
 	if(isset($_POST['cartmenu']) || isset($_POST['cart_checkout']))
 	{
 		$uid=$_SESSION['uid'];
-		$sql="SELECT * FROM cart WHERE user_id='$uid'";
+		$sql="SELECT * FROM cart inner join products on p_id=product_id WHERE user_id='$uid'";
 		$run_query=mysqli_query($conn,$sql);
 		$count=mysqli_num_rows($run_query);
 		if($count>0){
@@ -192,7 +192,7 @@
 			$pid=$row['p_id'];
 			$product_image=$row['product_image'];
 			$product_title=$row['product_title'];
-			$product_price=$row['price'];
+			$product_price=$row['product_price'];
 			$qty=$row['qty'];
 			$total=$row['total_amount'];
 			$price_array=array($total);
@@ -231,7 +231,7 @@
 			<div class='row'>
 						<div class='col-md-8'></div>
 						<div class='col-md-4'>
-							<b>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$$total_amt</b>
+							<b>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs$total_amt</b>
 						</div>
 					</div>
 		";
@@ -268,7 +268,7 @@
 			$row=mysqli_fetch_array($run_query1);
 			$stock=$row['product_qty'];
 			if($stock>=$qty){
-				$sql="UPDATE cart SET qty='$qty', price='$price', total_amount='$total' WHERE p_id='$pid' AND user_id='$uid'";
+				$sql="UPDATE cart SET qty='$qty', total_amount='$total' WHERE p_id='$pid' AND user_id='$uid'";
 				$run_query=mysqli_query($conn,$sql);
 				if($run_query){
 					echo "
@@ -302,7 +302,7 @@
 
 	if(isset($_POST['payment_checkout'])){
 		$uid=$_SESSION['uid'];
-		$sql="SELECT * FROM cart WHERE user_id='$uid'";
+		$sql="SELECT * FROM cart inner join products on p_id=product_id WHERE user_id='$uid'";
 		$run_query=mysqli_query($conn,$sql);
 		$i=rand();
 		while($cart_row=mysqli_fetch_array($run_query))

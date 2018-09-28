@@ -62,10 +62,7 @@ CREATE TABLE `cart` (
   `p_id` int(10) NOT NULL,
   `ip_add` varchar(250) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `product_title` varchar(100) NOT NULL,
-  `product_image` varchar(300) NOT NULL,
   `qty` int(100) NOT NULL,
-  `price` int(100) NOT NULL,
   `total_amount` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -73,9 +70,9 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `product_title`, `product_image`, `qty`, `price`, `total_amount`) VALUES
-(79, 11, '0.0.0.0', 2, 'Baby Shirt', 'babyshirt.JPG', 1, 500, 500),
-(80, 2, '0.0.0.0', 2, 'iPhone 5s', 'iphonemobile.JPG', 1, 25000, 25000);
+INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`,`qty`, `total_amount`) VALUES
+(79, 11, '0.0.0.0', 2, 1, 500),
+(80, 2, '0.0.0.0', 2, 1, 25000);
 
 -- --------------------------------------------------------
 
