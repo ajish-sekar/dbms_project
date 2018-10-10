@@ -6,8 +6,10 @@
 	}
 	$uid=$_SESSION['uid'];
 	$sql="SELECT * FROM customer_order WHERE uid='$uid'";
-	$run_query=mysqli_query($conn,$sql);
-	$row=mysqli_fetch_array($run_query);
+	// $run_query=mysqli_query($conn,$sql);
+	// $row=mysqli_fetch_array($run_query);
+	$run_query=odbc_exec($conn,$sql);
+	$row=odbc_fetch_array($run_query);
 	$trid=$row['tr_id'];
  ?>
 

@@ -80,9 +80,13 @@
 		}
 
 		//check for available user-details
-		$sql = "SELECT user_id FROM user_info WHERE email = '$email' LIMIT 1" ;
-		$check_query = mysqli_query($conn,$sql);
-		$count_email = mysqli_num_rows($check_query);
+		// $sql = "SELECT user_id FROM user_info WHERE email = '$email' LIMIT 1" ;
+		$sql = "SELECT count(*) as counter FROM user_info WHERE email = '$email' LIMIT 1" ;
+		// $check_query = mysqli_query($conn,$sql);
+		// $count_email = mysqli_num_rows($check_query);
+		$check_query = odbc_exec($conn,$sql);
+		$row=odbc_fetch_array($check_query);
+		$count_email = $row['counter'];
 
 		if($count_email > 0){
 		echo "
@@ -96,7 +100,8 @@
 
 		else {
 					$sql="INSERT INTO user_info (first_name, last_name, email, password, mobile, address1, address2) VALUES ('$f_name','$l_name','$email','$password','$mobile','$address1','$address2')";
-					$run_query=mysqli_query($conn,$sql);
+					// $run_query=mysqli_query($conn,$sql);
+					$run_query=odbc_exec($conn,$sql);
 					if($run_query){
 						echo "
 								<div class='alert alert-success'>

@@ -147,22 +147,6 @@ $(document).ready(function(){
 		})
 	})
 
-    $('#brand_add').click(function(e){
-		e.preventDefault();
-		var brand_name = $('#id').val(); 
-		$.ajax({
-			url: "action.php",
-			method: "POST",
-			data: {brandAdd:1, brand_name:brand_name}, 
-			success: function(data){
-				if(data=="true"){
-					$("#err_msg").html(data);
-				
-				}
-			}
-		})
-	})
-
     $('#Update').click(function(e){
 		e.preventDefault();
         var p_id = $('#update_id').val();
@@ -175,6 +159,7 @@ $(document).ready(function(){
 			success: function(data){
 				if(data=="true"){
 					 $("#"+$p_id).html($p_qty);
+				}
 		        
 		   }
 		})

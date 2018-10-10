@@ -12,16 +12,24 @@
 	$product_word=$_POST['product_word'];
 
 	$sql_prod = "SELECT * FROM brands WHERE brand_title = '$brand'";
-	$run_query=mysqli_query($conn,$sql_prod);
+	// $run_query=mysqli_query($conn,$sql_prod);
+	$run_query=odbc_exec($conn,$sql_prod);
 	
-	while($row=mysqli_fetch_array($run_query)){
+	// while($row=mysqli_fetch_array($run_query)){
+	// 	$brand_no=$row['brand_id'];
+	// }
+	while($row=odbc_fetch_array($run_query)){
 		$brand_no=$row['brand_id'];
 	}
 
 	$sql_cat = "SELECT * FROM categories WHERE cat_title = '$category'";
-	$run_query=mysqli_query($conn,$sql_cat);
+	// $run_query=mysqli_query($conn,$sql_cat);
+	$run_query=odbc_exec($conn,$sql_cat);
 	
-	while($row=mysqli_fetch_array($run_query)){
+	// while($row=mysqli_fetch_array($run_query)){
+	// 	$cat_no=$row['cat_id'];
+	// }
+	while($row=odbc_fetch_array($run_query)){
 		$cat_no=$row['cat_id'];
 	}
  						
@@ -33,7 +41,8 @@
 	}
 	else{
 		  $sql3="INSERT INTO products (product_cat,product_brand,product_title,product_price,product_qty,product_desc,product_image,product_keywords) VALUES ('$cat_no','$brand_no','$p_name','$p_price','$p_qty','$product_desc','$product_img','$product_word')";
-					$run_query3=mysqli_query($conn,$sql3);
+					// $run_query3=mysqli_query($conn,$sql3);
+					$run_query3=odbc_exec($conn,$sql3);
 					if($run_query3){
 						echo "
 								<div class='alert alert-success' style='max-height:10%'>

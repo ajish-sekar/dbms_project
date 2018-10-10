@@ -55,14 +55,23 @@
    	<p>Update Quantity</p>
    	
  <?php
-   	$result = mysqli_query($conn,"SELECT product_id,product_title, product_qty FROM products");
+	   // $result = mysqli_query($conn,"SELECT product_id,product_title, product_qty FROM products");
+	$result = odbc_exec($conn,"SELECT product_id,product_title, product_qty FROM products");
     echo "<table border='1'>
     <tr> 
     <th>Id</th>
     <th>Product</th>
     <th>Quantity</th>
     </tr>";
-    while($row = mysqli_fetch_array($result))
+    // while($row = mysqli_fetch_array($result))
+    // {echo "<tr>";
+    //  $id = $row['product_id'];
+    //  echo "<td style='width:1%'>" . $row['product_id'] . "</td>";
+    //  echo "<td style='width:300px'>" . $row['product_title'] . "</td>";
+    //  echo "<td style='width:1%' id='$id'>" . $row['product_qty'] . "</td>";
+    //  echo "</tr>";
+	// }
+	while($row = odbc_fetch_array($result))
     {echo "<tr>";
      $id = $row['product_id'];
      echo "<td style='width:1%'>" . $row['product_id'] . "</td>";
@@ -92,21 +101,29 @@
         <p> Add Product </p>
         <?php 
     	$query = "select brand_title from brands"; 
-        $run_query=mysqli_query($conn,$query);
+		// $run_query=mysqli_query($conn,$query);
+		$run_query=odbc_exec($conn,$query);
         echo '<select name="Brand" id="Brand">';           
-        while ($row = mysqli_fetch_array($run_query)) {
-        echo '<option value="'.$row['brand_title'].'">'.$row['brand_title'].'</option>';
-        }
+        // while ($row = mysqli_fetch_array($run_query)) {
+        // echo '<option value="'.$row['brand_title'].'">'.$row['brand_title'].'</option>';
+		// }
+		while ($row = odbc_fetch_array($run_query)) {
+			echo '<option value="'.$row['brand_title'].'">'.$row['brand_title'].'</option>';
+			}
 
         echo '</select>';
        
         
         $query = "select cat_title from categories"; 
-        $run_query=mysqli_query($conn,$query);
+		// $run_query=mysqli_query($conn,$query);
+		$run_query=odbc_exec($conn,$query);
         echo '<select name="Category" id="Category">';           
-        while ($row = mysqli_fetch_array($run_query)) {
-        echo '<option value="'.$row['cat_title'].'">'.$row['cat_title'].'</option>';
-        }
+        // while ($row = mysqli_fetch_array($run_query)) {
+        // echo '<option value="'.$row['cat_title'].'">'.$row['cat_title'].'</option>';
+		// }
+		while ($row = odbc_fetch_array($run_query)) {
+			echo '<option value="'.$row['cat_title'].'">'.$row['cat_title'].'</option>';
+			}
 
         echo '</select>';
         ?>
