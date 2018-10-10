@@ -86,9 +86,9 @@ $(document).ready(function(){
 			success: function(data){
 				$('#get_product').html(data);
 			}
-		})
-	}
-	});
+		  })
+	    }		
+	})
 
 	$('#signup_btn').click(function(e){
 		e.preventDefault();
@@ -103,22 +103,100 @@ $(document).ready(function(){
 		})
 	})
 
-	$("#login").click(function(event){
-		event.preventDefault();
-		var email=$('#email').val();
-		var pwd=$('#password').val();
-		console.log(pwd);
+    $('#signup_btn').click(function(e){
+		e.preventDefault();
 		$.ajax({
-			url: "login.php",
+			url: "register.php",
 			method: "POST",
-			data: {userLogin:1,email:email, pwd:pwd},
+			data: $("form").serialize(),
+			success: function(data){
+				$("#err_msg").html(data);
+				$("form").trigger("reset");
+			}
+		})
+	})
+
+
+	$("#add_prod_btn").click(function(event){
+		event.preventDefault();
+		$.ajax({
+			url: "productAdd.php",
+			method: "POST",
+				data: $("form").serialize(),
+			success: function(data){
+				$("#err_msg").html(data);
+				$("form").trigger("reset");
+            }		
+		})
+	})
+
+	$("#admin_login").click(function(event){
+		event.preventDefault();
+		var admin_name=$('#admin_name').val();
+		var admin_pwd=$('#admin_pwd').val();
+		console.log(admin_pwd);
+		$.ajax({
+			url: "admin_login.php",
+			method: "POST",
+			data: {adminLogin:1,admin_name:admin_name, admin_pwd:admin_pwd},
 			success: function(data){
 				if(data=="true"){
-					window.location.href="profile.php";
+					window.location.href="admin_home.php";
 				}
 			}
 		})
 	})
+
+    $('#brand_add').click(function(e){
+		e.preventDefault();
+		var brand_name = $('#id').val(); 
+		$.ajax({
+			url: "action.php",
+			method: "POST",
+			data: {brandAdd:1, brand_name:brand_name}, 
+			success: function(data){
+				if(data=="true"){
+					$("#err_msg").html(data);
+				
+				}
+			}
+		})
+	})
+
+    $('#Update').click(function(e){
+		e.preventDefault();
+        var p_id = $('#update_id').val();
+        var p_qty = $('#update_qty').val();
+        $.ajax({
+			url: "action.php",
+			method: "POST",
+			data: {updt:1, p_id:p_id, p_qty:p_qty}, 
+			dataType: "html",
+			success: function(data){
+				if(data=="true"){
+					 $("#"+$p_id).html($p_qty);
+		        
+		   }
+		})
+	})
+   
+    $('#brand_add').click(function(e){
+		e.preventDefault();
+		var brand_name = $('#brand_name').val(); 
+		$.ajax({
+			url: "action.php",
+			method: "POST",
+			data: {brandAdd:1, brand_name:brand_name}, 
+			success: function(data){
+				if(data=="true"){
+					$("#err_msg").html(data);
+				
+				}
+			}
+		})
+	})
+
+
 
 	cart_count();
 
@@ -322,4 +400,6 @@ $(document).ready(function(){
 		})
 	})
 	
-})
+	
+});
+

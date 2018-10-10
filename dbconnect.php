@@ -2,7 +2,7 @@
 	
 	$host='localhost';
 	$username='root';
-	$pass='Ajish123';
+	$pass='nitjee';
 	$db='amaclone';
 
 	$conn=mysqli_connect($host,$username,$pass,$db);

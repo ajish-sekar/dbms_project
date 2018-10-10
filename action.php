@@ -352,5 +352,57 @@
 		";
 	}
 
- ?>
+//for admin 
+	if(isset($_POST['brandAdd']))
+	{
+		$brand = $_POST['brand_name'];
+		$sql="INSERT INTO brands (brand_title) SELECT * FROM( SELECT '$brand') AS tmp WHERE NOT EXISTS( SELECT brand_title FROM brands WHERE brand_title ='$brand')";
+					$run_query=mysqli_query($conn,$sql);
+					if($run_query){
+						echo "
+								<div class='alert alert-success' style='max-height:10%'>
+									<p>Brand Added</p>
+								</div>
+						";
+					}
+			         
+	}
+
+
+	if(isset($_POST['updt']))
+    { 
+ 	$p_id = $_POST['p_id'];
+	$p_qty = $_POST['p_qty'];
+
+    if($p_qty<=0)
+    {echo "<div class='alert alert-danger' role='alert'>
+  					<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+  					Invalid quantity!
+				</div>";
+    }
+
+    $sql = "SELECT * FROM products WHERE product_id ='$p_id'";
+    $result = mysqli_query($conn,$sql);
+    
+    if(mysqli_num_rows($result)<1)
+    {echo "<div class='alert alert-danger' role='alert'>
+  					<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+  					Product does not exist!
+				</div>";
+
+    }
+
+	$sql = "UPDATE products SET product_qty ='$p_qty' WHERE product_id ='$p_id'";
+	if($result = mysqli_query($conn,$sql))
+	{
+		echo "<div class='alert alert-success' style='max-height:10%'>
+									<p>Updated</p>
+								</div>";
+	}
+
+    }
+?>
+
+
+  
 
